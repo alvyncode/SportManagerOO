@@ -4,6 +4,7 @@ namespace SportManager.Models;
 
 public partial class Joueur : ObservableObject
 {
+    public int Id { get; set; }
     [ObservableProperty]
     private string _nom;
     [ObservableProperty]
