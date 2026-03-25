@@ -2,11 +2,14 @@ using SportManager.Models;
 using Microsoft.EntityFrameworkCore;
 namespace SportManager.Data;
 
-public class SportManagerDBContext: DbContext
+public class SportManagerDBContext : DbContext
 {
     public SportManagerDBContext()
     {
-        
+    }
+    public SportManagerDBContext(DbContextOptions<SportManagerDBContext> options) 
+        : base(options)
+    {
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -21,6 +24,6 @@ public class SportManagerDBContext: DbContext
         }
     }
     public DbSet<Joueur> Joueurs { get; set; }
-    public DbSet<Equipe> Equipes {get; set; }
+    public DbSet<Equipe> Equipes { get; set; }
     public DbSet<Match> Matches { get; set; }
 }
