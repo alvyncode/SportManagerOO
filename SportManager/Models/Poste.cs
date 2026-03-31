@@ -1,5 +1,3 @@
-using System;
-
 namespace SportManager.Models;
 
 public enum Poste
