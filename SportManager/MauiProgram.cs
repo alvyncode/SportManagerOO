@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using SportManager.Data;
+using SkiaSharp.Views.Maui.Controls.Hosting;
+
 namespace SportManager;
 
 public static class MauiProgram
@@ -24,6 +26,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
+		builder
+    		.UseMauiApp<App>()
+    		.UseSkiaSharp();
 
 #if DEBUG
 		builder.Logging.AddDebug();
