@@ -82,7 +82,6 @@
 	  <Folder Include="Data\Migrations\" />
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="ViewModels\" />
-	  <Folder Include="Views\" />
 	</ItemGroup>
 
 </Project>
