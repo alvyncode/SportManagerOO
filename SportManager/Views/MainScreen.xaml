@@ -18,19 +18,22 @@
                     WidthRequest="200"
                     HeightRequest="50"
                     BackgroundColor="#F28C57"
-                    TextColor="Black"/>
+                    TextColor="Black"
+                    Clicked="OnGestionEquipeClicked"/>
         
             <Button Text="Jouer match"
                     WidthRequest="200"
                     HeightRequest="50"
                     BackgroundColor="#F28C57"
-                    TextColor="Black"/>
+                    TextColor="Black"
+                    Clicked="OnJouerMatchClicked"/>
         
             <Button Text="Historique"
                     WidthRequest="200"
                     HeightRequest="50"
                     BackgroundColor="#F28C57"
-                    TextColor="Black"/>
+                    TextColor="Black"
+                    Clicked="OnHistoriqueClicked"/>
         
         </VerticalStackLayout>
     </Grid>
