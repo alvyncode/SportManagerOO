@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SportManager.Views.RecrutementPage"
+             Title="Recrutement">
+
+    <Grid BackgroundColor="#3A3A3A">
+        <VerticalStackLayout 
+            VerticalOptions="Center"
+            HorizontalOptions="Center"
+            Spacing="30">
+         <HorizontalStackLayout Spacing="25" VerticalOptions="Center">
+                <Grid ColumnSpacing="2" RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="70"/>
+                    </Grid.ColumnDefinitions>
+
+    <!-- HEADER -->
+                    <Label Text="ID" Grid.Row="0" Grid.Column="0" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"/>
+                    <Label Text="Nom" Grid.Row="0" Grid.Column="1" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"/>
+                    <Label Text="Prénom" Grid.Row="0" Grid.Column="2" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"/>
+                    <Label Text="Score" Grid.Row="0" Grid.Column="3" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"/>
+                    <Label Text="Vit." Grid.Row="0" Grid.Column="4" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"/>
+                    <Label Text="Endu." Grid.Row="0" Grid.Column="5" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"/>
+                    <Label Text="Tech." Grid.Row="0" Grid.Column="6" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"/>
+                    <Label Text="Force" Grid.Row="0" Grid.Column="7" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"/>
+                    <Label Text="Poste" Grid.Row="0" Grid.Column="8" TextColor="White" FontSize="12" HorizontalTextAlignment="Center"/>
+
+
+                    <Entry Grid.Row="1" Grid.Column="0"
+                           Placeholder="ID"
+                           BackgroundColor="#DCDCDC"
+                           HeightRequest="35"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Black"
+                           FontSize="12"/>
+
+                    <Entry Grid.Row="1" Grid.Column="1"
+                           Placeholder="Nom"
+                           BackgroundColor="#DCDCDC"
+                           HeightRequest="35"
+                           TextColor="Black"
+                           FontSize="12"/>
+
+                    <Entry Grid.Row="1" Grid.Column="2"
+                           Placeholder="Prénom"
+                           BackgroundColor="#DCDCDC"
+                           HeightRequest="35"
+                           TextColor="Black"
+                           FontSize="12"/>
+
+                    <Entry Grid.Row="1" Grid.Column="3"
+                           Placeholder="Score"
+                           BackgroundColor="#DCDCDC"
+                           HeightRequest="35"
+                           Keyboard="Numeric"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Black"
+                           FontSize="12"/>
+
+                    <Entry Grid.Row="1" Grid.Column="4"
+                           Placeholder="Vit"
+                           BackgroundColor="#DCDCDC"
+                           HeightRequest="35"
+                           Keyboard="Numeric"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Black"
+                           FontSize="12"/>
+
+                    <Entry Grid.Row="1" Grid.Column="5"
+                           Placeholder="Endu"
+                           BackgroundColor="#DCDCDC"
+                           HeightRequest="35"
+                           Keyboard="Numeric"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Black"
+                           FontSize="12"/>
+
+                    <Entry Grid.Row="1" Grid.Column="6"
+                           Placeholder="Tech"
+                           BackgroundColor="#DCDCDC"
+                           HeightRequest="35"
+                           Keyboard="Numeric"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Black"
+                           FontSize="12"/>
+
+                    <Entry Grid.Row="1" Grid.Column="7"
+                           Placeholder="Force"
+                           BackgroundColor="#DCDCDC"
+                           HeightRequest="35"
+                           Keyboard="Numeric"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Black"
+                           FontSize="12"/>
+
+                    <Entry Grid.Row="1" Grid.Column="8"
+                           Placeholder="Poste"
+                           BackgroundColor="#DCDCDC"
+                           HeightRequest="35"
+                           HorizontalTextAlignment="Center"
+                           TextColor="Black"
+                           FontSize="12"/>
+                </Grid>
+
+                <!-- BOUTON -->
+                <Button Text="Valider"
+                        WidthRequest="100"
+                        HeightRequest="35"
+                        Margin="0,22,0,0"
+                        BackgroundColor="#F28C57"
+                        TextColor="Black"
+                        VerticalOptions="Center"
+                        Clicked="OnValiderClicked"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
