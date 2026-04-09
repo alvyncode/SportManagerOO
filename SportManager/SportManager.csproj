@@ -80,9 +80,10 @@
 	<ItemGroup>
 	  <Folder Include="Data\" />
 	  <Folder Include="Data\Migrations\" />
+	  <Folder Include="Data\Repositories\" />
+	  <Folder Include="Resources\Fonts\" />
 	  <Folder Include="Resources\Images\" />
 	  <Folder Include="ViewModels\" />
-	  <Folder Include="Views\" />
 	</ItemGroup>
 
 </Project>

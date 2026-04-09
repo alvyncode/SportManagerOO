@@ -21,8 +21,8 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.ConfigureFonts(fonts =>
 			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+				fonts.AddFont("IstokWeb-Bold.ttf", "IstokWeb-Bold");
+				fonts.AddFont("IstokWeb-Regular.ttf", "IstokWeb-Regular");
 			});
 
 #if DEBUG

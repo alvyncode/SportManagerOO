@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SportManager.Views.NouvelleEquipeConnexionMenu">
+    <Grid
+        Padding="15,15,0,0">
+        <Label Text="SPORT MANAGER"
+               Style="{StaticResource Headline}"
+               VerticalOptions="Start"
+               HorizontalOptions="Start"/>
+        <VerticalStackLayout VerticalOptions="Center"
+                             HorizontalOptions="Center"
+                             Padding="0,60">
+            <Label Style="{StaticResource SubHeadline}"
+                   HorizontalOptions="Start"
+                   Text="Nom de l'équipe"></Label>
+            <Entry HorizontalOptions="Start"
+                   WidthRequest="400"></Entry>
+            <Button HorizontalOptions="Center"
+                    Text="Valider"
+                    Margin="0,40"></Button>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

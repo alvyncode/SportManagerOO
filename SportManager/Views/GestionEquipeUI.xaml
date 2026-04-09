@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SportManager.Views.GestionEquipeUI">
+    <Grid HorizontalOptions="Center"
+          ColumnSpacing="0">
+        <Grid HorizontalOptions="Fill"
+              ColumnSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="%NOM DE L'EQUIPE%"
+                       Style="{StaticResource Headline}"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       Grid.Column="0"
+                       Margin="14,14,0,0"/>
+                <Button HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        Text="Nouvelle Équipe"
+                        HeightRequest="20"
+                        Margin="20,50,20,0"
+                        Grid.Column="1"/>
+            </Grid>
+
+            <VerticalStackLayout Margin="10,40"
+                                 Padding="10"
+                                 Grid.Row="2">
+                <Grid Margin="10,0,10,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Text="ID"
+                           Grid.Column="0"
+                           TextColor="White"/>
+                    <Label Text="Nom"
+                           Grid.Column="1"
+                           TextColor="White"/>
+                    <Label Text="Score"
+                           Grid.Column="2"
+                           TextColor="White"/>
+                </Grid>
+
+                <CollectionView ItemsSource="cvbffd">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,5,0,5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0"
+                                        BackgroundColor="#D3D3D3"
+                                        StrokeShape="RoundRectangle 8"
+                                        Padding="10,5"
+                                        Margin="0,0,10,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="4*"/>
+                                            <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Text="cfsf"
+                                               TextColor="Black"
+                                               Grid.Column="0"
+                                               VerticalOptions="Center"/>
+                                        <Label Text="efzsf"
+                                               TextColor="Black"
+                                               Grid.Column="1"
+                                               VerticalOptions="Center"/>
+                                        <Label Text="57"
+                                               TextColor="Black"
+                                               Grid.Column="2"
+                                               VerticalOptions="Center"/>
+                                    </Grid>
+                                </Border>
+
+                                <Button Grid.Column="2"
+                                        BackgroundColor="#CC0000"
+                                        CornerRadius="8"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Margin="2"/>
+                                <Button Grid.Column="3"
+                                        Text="Voir+"
+                                        TextColor="Black"
+                                        FontAttributes="Bold"
+                                        BackgroundColor="#FF9966"
+                                        CornerRadius="8"
+                                        HeightRequest="40"
+                                        Margin="2"/>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>
