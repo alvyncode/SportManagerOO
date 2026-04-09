@@ -1,9 +1,12 @@
+using SportManager.ViewModels;
+
 namespace SportManager.Views;
 
 public partial class RecrutementPage : ContentPage
 {
 	public RecrutementPage()
 	{
+		BindingContext = new RecrutementPageViewModel();
 		InitializeComponent();
 	}
 

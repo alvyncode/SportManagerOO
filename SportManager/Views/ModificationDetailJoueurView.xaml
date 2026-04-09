@@ -126,7 +126,7 @@
                         VerticalOptions="Center"
                         Padding="0"
                         Margin="0,22,0,0"
-                        Clicked="OnValiderClicked"/>
+                        Command="{Binding ButtonValiderModification}"/>
             </HorizontalStackLayout>
             <microcharts:ChartView 
             x:Name="radarChart"

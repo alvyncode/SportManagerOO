@@ -18,7 +18,8 @@
                    WidthRequest="400"></Entry>
             <Button HorizontalOptions="Center"
                     Text="Valider"
-                    Margin="0,40"></Button>
+                    Margin="0,40"
+                    Command="{Binding ButtonValiderNewTeam}"></Button>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

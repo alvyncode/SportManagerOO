@@ -27,7 +27,8 @@
                         Text="Nouvelle Équipe"
                         HeightRequest="20"
                         Margin="20,50,20,0"
-                        Grid.Column="1"/>
+                        Grid.Column="1"
+                        Command="{Binding ButtonNouvelleEquipe}"/>
             </Grid>
 
             <VerticalStackLayout Margin="10,40"
@@ -103,7 +104,8 @@
                                         BackgroundColor="#FF9966"
                                         CornerRadius="8"
                                         HeightRequest="40"
-                                        Margin="2"/>
+                                        Margin="2"
+                                        Command="{Binding ButtonVoirEquipe}"/>
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

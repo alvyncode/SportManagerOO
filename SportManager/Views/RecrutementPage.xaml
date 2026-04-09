@@ -119,7 +119,8 @@
                 <!-- BOUTON -->
                 <Button Text="Valider"
                         Margin="0,22,0,0"
-                        VerticalOptions="Center"/>
+                        VerticalOptions="Center"
+                        Command="{Binding ButtonValiderRecrutement}"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </Grid>
