@@ -1,11 +1,13 @@
 using Microcharts;
 using SkiaSharp;
+using SportManager.ViewModels;
 namespace SportManager.Views;
 
 public partial class ModificationDetailJoueurView : ContentPage
 {
 	public ModificationDetailJoueurView()
 	{
+        BindingContext = new ModificationDetailJoueurViewModel();
 		InitializeComponent();
 	}
 

@@ -28,7 +28,8 @@
                         Text="Recruter"
                         HeightRequest="20"
                         Margin="20,50,20,0"
-                        Grid.Column="1"/>
+                        Grid.Column="1"
+                        Command="{Binding ButtonRecruter}"/>
             </Grid>
 
             <VerticalStackLayout Grid.Row="1">
@@ -195,7 +196,8 @@
                                             BackgroundColor="#FF9966"
                                             CornerRadius="8"
                                             HeightRequest="40"
-                                            Margin="2"/>
+                                            Margin="2"
+                                            Command="{Binding ButtonModifier}"/>
                                 </Grid>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

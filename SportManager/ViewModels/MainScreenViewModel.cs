@@ -9,9 +9,9 @@ public class MainScreenViewModel:ObservableObject
     public AsyncRelayCommand ButtonGestionEquipe { get; set; }
     public MainScreenViewModel()
     {
-        ButtonGestionEquipe = new AsyncRelayCommand(NaviguerVersListeEquipe);
+        ButtonGestionEquipe = new AsyncRelayCommand(NaviguerVersGestionEquipeUI);
     }
-    public async Task NaviguerVersListeEquipe()
+    public async Task NaviguerVersGestionEquipeUI()
     {
         await Shell.Current.GoToAsync("GestionEquipeUI");
     }
