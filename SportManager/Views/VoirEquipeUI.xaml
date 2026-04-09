@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="GESTION ÉQUIPE"
+                <Label Text="%NOM DE L'EQUIPE%"
                        Style="{StaticResource Headline}"
                        VerticalOptions="Start"
                        HorizontalOptions="Start"

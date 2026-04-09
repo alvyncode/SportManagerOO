@@ -4,7 +4,7 @@
              x:Class="SportManager.Views.RecrutementPage"
              Title="Recrutement">
 
-    <Grid BackgroundColor="#3A3A3A">
+    <Grid>
         <VerticalStackLayout 
             VerticalOptions="Center"
             HorizontalOptions="Center"
@@ -118,13 +118,8 @@
 
                 <!-- BOUTON -->
                 <Button Text="Valider"
-                        WidthRequest="100"
-                        HeightRequest="35"
                         Margin="0,22,0,0"
-                        BackgroundColor="#F28C57"
-                        TextColor="Black"
-                        VerticalOptions="Center"
-                        Clicked="OnValiderClicked"/>
+                        VerticalOptions="Center"/>
             </HorizontalStackLayout>
         </VerticalStackLayout>
     </Grid>
