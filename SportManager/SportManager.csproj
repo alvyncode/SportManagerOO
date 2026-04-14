@@ -85,7 +85,6 @@
 	  <Folder Include="Data\Repositories\" />
 	  <Folder Include="Resources\Fonts\" />
 	  <Folder Include="Resources\Images\" />
-	  <Folder Include="ViewModels\" />
 	</ItemGroup>
 
 </Project>

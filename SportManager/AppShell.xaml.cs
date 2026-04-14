@@ -3,6 +3,12 @@ namespace SportManager;
 
 public partial class AppShell : Shell
 {
+	private async void OnBackButtonClicked(object sender, EventArgs e)
+
+	{
+	    await Shell.Current.GoToAsync("..");
+	}
+ 
 	public AppShell()
 	{
 		InitializeComponent();

@@ -7,8 +7,8 @@ public partial class ModificationDetailJoueurView : ContentPage
 {
 	public ModificationDetailJoueurView()
 	{
-        BindingContext = new ModificationDetailJoueurViewModel();
 		InitializeComponent();
+        BindingContext = new ModificationDetailJoueurViewModel();
 	}
 
     protected override void OnAppearing()

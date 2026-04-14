@@ -1,4 +1,5 @@
 using System.Collections.ObjectModel;
+using SportManager.ViewModels;
 namespace SportManager.Views;
 
 public partial class Historique : ContentPage
@@ -8,6 +9,7 @@ public partial class Historique : ContentPage
     public Historique()
     {
         InitializeComponent();
+        BindingContext = new HistoriqueViewModel();
 
         Matchs = new ObservableCollection<MatchHistorique>
         {

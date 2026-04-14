@@ -6,8 +6,8 @@ public partial class RecrutementPage : ContentPage
 {
 	public RecrutementPage()
 	{
-		BindingContext = new RecrutementPageViewModel();
 		InitializeComponent();
+		BindingContext = new RecrutementPageViewModel();
 	}
 
 	private void OnValiderClicked(object sender, EventArgs e)

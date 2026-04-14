@@ -7,7 +7,7 @@ public partial class GestionEquipeUI : ContentPage
 {
 	public GestionEquipeUI()
 	{
-		BindingContext = new GestionEquipeUIViewModel();
 		InitializeComponent();
+		BindingContext = new GestionEquipeUIViewModel();
 	}
 }

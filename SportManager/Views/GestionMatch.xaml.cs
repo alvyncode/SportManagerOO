@@ -1,4 +1,7 @@
+using SportManager.ViewModels;
+
 namespace SportManager.Views;
+
 
 public partial class GestionMatch : ContentPage
 {
@@ -7,6 +10,7 @@ public partial class GestionMatch : ContentPage
     public GestionMatch()
     {
         InitializeComponent();
+        BindingContext = new GestionMatchViewModel();
     }
 
     private async void OnJouerClicked(object sender, EventArgs e)

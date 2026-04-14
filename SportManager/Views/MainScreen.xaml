@@ -17,9 +17,11 @@
             <Button Text="Gestion Equipe"
                     Command="{Binding ButtonGestionEquipe}"/>
         
-            <Button Text="Jouer match"/>
+            <Button Text="Jouer match"
+                    Command="{Binding ButtonJouerMatch}"/>
         
-            <Button Text="Historique"/>
+            <Button Text="Historique"
+                    Command="{Binding ButtonHistorique}"/>
         
         </VerticalStackLayout>
     </Grid>

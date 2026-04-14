@@ -6,7 +6,7 @@ public partial class NouvelleEquipeConnexionMenu : ContentPage
 {
 	public NouvelleEquipeConnexionMenu()
 	{
-		BindingContext = new NouvelleEquipeConnexionMenuViewModel();
 		InitializeComponent();
+		BindingContext = new NouvelleEquipeConnexionMenuViewModel();
 	}
 }

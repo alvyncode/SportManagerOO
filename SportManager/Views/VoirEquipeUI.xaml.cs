@@ -6,7 +6,7 @@ public partial class VoirEquipeUI : ContentPage
 {
 	public VoirEquipeUI()
 	{
-		BindingContext = new VoirEquipeUIViewModel();
 		InitializeComponent();
+		BindingContext = new VoirEquipeUIViewModel();
 	}
 }
