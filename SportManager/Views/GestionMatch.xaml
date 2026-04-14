@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SportManager.Views.GestionMatch"
+             BackgroundColor="#2F2F2F"
+             Title="GestionMatch">
+    
+    <Grid Padding="25">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titre -->
+        <Label Text="MATCH"
+               FontSize="42"
+               FontAttributes="Bold"
+               TextColor="White"
+               HorizontalOptions="Start" />
+
+        <!-- Zone principale -->
+        <VerticalStackLayout Grid.Row="1"
+                             VerticalOptions="Center"
+                             Spacing="40">
+
+            <!-- Ligne : équipe 1 / score / équipe 2 -->
+            <Grid ColumnSpacing="25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Equipe 1 -->
+                <Border Grid.Column="0"
+                        BackgroundColor="#F59A63"
+                        StrokeThickness="0"
+                        Padding="12,4">
+                    <Picker x:Name="Equipe1Picker"
+                            Title="ÉQUIPE 1"
+                            TitleColor="Black"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            BackgroundColor="Transparent" />
+                </Border>
+
+                <!-- Score -->
+                <Label x:Name="ScoreLabel"
+                       Grid.Column="1"
+                       Text="-"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center" />
+
+                <!-- Equipe 2 -->
+                <Border Grid.Column="2"
+                        BackgroundColor="#F59A63"
+                        StrokeThickness="0"
+                        Padding="12,4">
+                    <Picker x:Name="Equipe2Picker"
+                            Title="ÉQUIPE 2"
+                            TitleColor="Black"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            BackgroundColor="Transparent" />
+                </Border>
+            </Grid>
+
+            <!-- Bouton -->
+            <Button Text="JOUER"
+                    WidthRequest="110"
+                    HeightRequest="55"
+                    CornerRadius="15"
+                    BackgroundColor="#F59A63"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    Clicked="OnJouerClicked"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

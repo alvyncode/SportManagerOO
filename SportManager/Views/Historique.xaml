@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SportManager.Views.Historique"
+             BackgroundColor="#2F2F2F"
+             Title="Historique">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30,40,30,20" Spacing="20">
+
+            <!-- Titre -->
+            <Label Text="HISTORIQUE"
+                   FontSize="40"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Start" />
+
+            <!-- En-têtes -->
+            <Grid ColumnDefinitions="0.7*,1.2*,1.2*,1*"
+                  Padding="0,0,0,5">
+                <Label Text="Id" TextColor="White" FontSize="18" />
+                <Label Grid.Column="1" Text="Équipe 1" TextColor="White" FontSize="18" />
+                <Label Grid.Column="2" Text="Équipe 2" TextColor="White" FontSize="18" />
+                <Label Grid.Column="3" Text="Score" TextColor="White" FontSize="18" />
+            </Grid>
+
+            <!-- Liste des matchs -->
+            <CollectionView x:Name="HistoriqueCollection"
+                            SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#6A5A5A"
+                               CornerRadius="8"
+                               Padding="12,10"
+                               Margin="0,6"
+                               HasShadow="False">
+
+                            <Grid ColumnDefinitions="0.7*,1.2*,1.2*,1*">
+                                <Label Text="{Binding Id}" TextColor="White" FontSize="18" />
+                                <Label Grid.Column="1" Text="{Binding Equipe1}" TextColor="White" FontSize="18" />
+                                <Label Grid.Column="2" Text="{Binding Equipe2}" TextColor="White" FontSize="18" />
+                                <Label Grid.Column="3" Text="{Binding Score}" TextColor="White" FontSize="18" />
+                            </Grid>
+
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

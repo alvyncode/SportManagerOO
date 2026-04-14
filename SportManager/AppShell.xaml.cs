@@ -12,5 +12,7 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute(nameof(NouvelleEquipeConnexionMenu), typeof(NouvelleEquipeConnexionMenu));
 		Routing.RegisterRoute(nameof(RecrutementPage), typeof(RecrutementPage));
 		Routing.RegisterRoute(nameof(VoirEquipeUI), typeof(VoirEquipeUI));
-	}
+        Routing.RegisterRoute(nameof(GestionMatch), typeof(GestionMatch));
+        Routing.RegisterRoute(nameof(Historique), typeof(Historique));
+    }
 }
