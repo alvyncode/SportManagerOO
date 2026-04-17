@@ -1,5 +1,6 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using SportManager.Data.Repositories;
 using System;
 
 namespace SportManager.ViewModels;
@@ -21,5 +22,4 @@ public class GestionEquipeUIViewModel:ObservableObject
     {
         await Shell.Current.GoToAsync("VoirEquipeUI");
     }
-
 }

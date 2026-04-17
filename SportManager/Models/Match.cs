@@ -5,8 +5,8 @@ namespace SportManager.Models;
 public partial class Match : ObservableObject
 {
     public int Id { get;set;}
-    private Equipe _premiereEquipe;
-    private Equipe _deuxiemeEquipe;
-    private int _scorePremiereEquipe;
-    private int _scoreDeuxiemeEquipe;
+    public Equipe PremiereEquipe { get; set; }
+    public Equipe DeuxiemeEquipe { get; set; }
+    public int ScorePremiereEquipe { get; set; }
+    public int ScoreDeuxiemeEquipe {get; set;}
 }

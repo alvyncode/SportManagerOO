@@ -6,7 +6,7 @@ namespace SportManager.Models;
 public partial class Equipe : ObservableObject
 {
     public int Id { get; set; }
-    private string _nom;
-    private int _score;
-    private ObservableCollection<Joueur> Joueurs;
+    public string Nom {get;set;}
+    public int Score { get; set; }
+    public ObservableCollection<Joueur> Joueurs {get;set;}
 }
