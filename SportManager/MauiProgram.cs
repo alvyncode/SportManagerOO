@@ -29,7 +29,7 @@ public static class MauiProgram
 		builder
     		.UseMauiApp<App>()
     		.UseSkiaSharp();
-
+		builder.Services.AddTransient<SportManager.Data.Repositories.EquipeRepository>();
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif

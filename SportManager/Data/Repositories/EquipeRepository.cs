@@ -7,8 +7,8 @@ namespace SportManager.Data.Repositories;
 
 public class EquipeRepository
 {
-    private readonly SportManagerDBContext _context;
-    public EquipeRepository(SportManagerDBContext context)
+    private SportManagerDBContext _context;
+    public EquipeRepository()
     {
         var ConnexionString = "server=localhost;user=root;password=;database=sport_manager_oo_db";
         var serverVersion = new MySqlServerVersion(new Version(8, 0, 30));
@@ -16,24 +16,30 @@ public class EquipeRepository
         optionsBuilder.UseMySql(ConnexionString,serverVersion);
         _context = new SportManagerDBContext(optionsBuilder.Options);
     }
-    public Equipe EnregistrerEtRecupererEquipe(Equipe equipe)
+    public async Task<Equipe> EnregistrerEtRecupererEquipe(string nomDeLequipe)
     {
-        var equipeExistante = _context.Equipes
-            .FirstOrDefault(j => j.Nom.ToLower() == equipe.Nom.ToLower());
-
+        var equipeExistante = await _context.Equipes
+            .Include(e => e.Joueurs)
+            .FirstOrDefaultAsync(j => j.Nom.ToLower() == nomDeLequipe.ToLower());
         if (equipeExistante != null)
         {
-            _context.Equipes.Update(equipeExistante);
-            equipe = equipeExistante; 
+            return equipeExistante; 
         }
-        else
-        {
-            _context.Equipes.Add(equipeExistante);
-        }
-        _context.SaveChanges();
-        return equipe;
+
+        Equipe nouvelleEquipe = new() { Nom = nomDeLequipe };
+        _context.Equipes.Add(nouvelleEquipe);
+
+        await _context.SaveChangesAsync(); 
+        
+        return nouvelleEquipe;
     }
-    public ObservableCollection<Joueur> ListeEquipe(string nomDeLEquipe)
+    public async Task<Equipe?> RetrouverEquipe(string nomDeLequipe)
+    {
+         return await _context.Equipes
+            .Include(e => e.Joueurs)
+            .FirstOrDefaultAsync(j => j.Nom.ToLower() == nomDeLequipe.ToLower());
+    }
+    public ObservableCollection<Joueur> ListeJoueur(string nomDeLEquipe)
     {
         var Equipe = _context.Equipes.FirstOrDefault(p => p.Nom == nomDeLEquipe);
         if (Equipe != null)
@@ -58,5 +64,16 @@ public class EquipeRepository
         }
         _context.SaveChanges();
         
+    }
+    public async Task<List<Equipe>> ListeEquipe()
+    {
+        var l = await _context.Equipes.ToListAsync();
+        return l ;
+    }
+    public async Task SupprimerEquipe(string nomDeLEquipe)
+    {
+        await _context.Equipes
+                    .Where(e => e.Nom == nomDeLEquipe)
+                    .ExecuteDeleteAsync();
     }
 }

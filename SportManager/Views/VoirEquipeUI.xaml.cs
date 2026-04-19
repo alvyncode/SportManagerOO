@@ -1,12 +1,13 @@
+using SportManager.Data.Repositories;
 using SportManager.ViewModels;
 
 namespace SportManager.Views;
 
 public partial class VoirEquipeUI : ContentPage
 {
-	public VoirEquipeUI()
+	public VoirEquipeUI(EquipeRepository equipeRepository)
 	{
 		InitializeComponent();
-		BindingContext = new VoirEquipeUIViewModel();
+		BindingContext = new VoirEquipeUIViewModel(equipeRepository);
 	}
 }

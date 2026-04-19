@@ -15,7 +15,8 @@
                    HorizontalOptions="Start"
                    Text="Nom de l'équipe"></Label>
             <Entry HorizontalOptions="Start"
-                   WidthRequest="400"></Entry>
+                   WidthRequest="400"
+                   Text ="{Binding NomDeLequipe}"></Entry>
             <Button HorizontalOptions="Center"
                     Text="Valider"
                     Margin="0,40"

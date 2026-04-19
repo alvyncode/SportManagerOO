@@ -17,7 +17,7 @@
                     <ColumnDefinition Width="4*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Label Text="%NOM DE L'EQUIPE%"
+                <Label Text="{Binding NewEquipe.Nom}"
                        Style="{StaticResource Headline}"
                        VerticalOptions="Start"
                        HorizontalOptions="Start"
@@ -110,7 +110,7 @@
                                 InputTransparent="True"/>
                     </Grid>
 
-                    <CollectionView ItemsSource="dfrfgrfg">
+                    <CollectionView ItemsSource="{Binding NewEquipe.Joueurs}">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Grid Margin="0,5,0,5">
@@ -140,43 +140,43 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <Label Text="1"
+                                            <Label Text="{Binding Id}"
                                                     TextColor="Black"
                                                     Grid.Column="0"
                                                     VerticalOptions="Center"/>
-                                            <Label Text="Cool"
+                                            <Label Text="{Binding Nom}"
                                                     TextColor="Black"
                                                     Grid.Column="1"
                                                     VerticalOptions="Center"/>
-                                            <Label Text="Raoul"
+                                            <Label Text="{Binding Prenom}"
                                                     TextColor="Black"
                                                     Grid.Column="2"
                                                     VerticalOptions="Center"/>
-                                            <Label Text="55"
+                                            <Label Text="{Binding Score}"
                                                     TextColor="Black"
                                                     Grid.Column="3"
                                                     VerticalOptions="Center"/>
-                                            <Label Text="55"
+                                            <Label Text="{Binding Vitesse}"
                                                     TextColor="Black"
                                                     Grid.Column="4"
                                                     VerticalOptions="Center"/>
-                                            <Label Text="57"
+                                            <Label Text="{Binding Endurence}"
                                                     TextColor="Black"
                                                     Grid.Column="5"
                                                     VerticalOptions="Center"/>
-                                            <Label Text="54"
+                                            <Label Text="{Binding Technique}"
                                                     TextColor="Black"
                                                     Grid.Column="6"
                                                     VerticalOptions="Center"/>
-                                            <Label Text="12"
+                                            <Label Text="{Binding Force}"
                                                     TextColor="Black"
                                                     Grid.Column="7"
                                                     VerticalOptions="Center"/>
-                                            <Label Text="P."
+                                            <Label Text="{Binding Poste}"
                                                     TextColor="Black"
                                                     Grid.Column="8"
                                                     VerticalOptions="Center"/>
-                                            <Label Text="Non"
+                                            <Label Text="{Binding Blessure}"
                                                     TextColor="Black"
                                                     Grid.Column="9"
                                                     VerticalOptions="Center"/>
@@ -202,7 +202,6 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
                 </VerticalStackLayout>
             </VerticalStackLayout>
         </Grid>
