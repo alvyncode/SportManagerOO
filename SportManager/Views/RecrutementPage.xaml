@@ -25,7 +25,7 @@
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="60"/>
                         <ColumnDefinition Width="60"/>
-                        <ColumnDefinition Width="70"/>
+                        <ColumnDefinition Width="75"/>
                     </Grid.ColumnDefinitions>
 
     <!-- HEADER -->
@@ -41,7 +41,8 @@
 
 
                     <Entry Grid.Row="1" Grid.Column="0"
-                           Placeholder="ID"
+                           Placeholder="ID auto"
+                           IsEnabled="False"
                            BackgroundColor="#DCDCDC"
                            HeightRequest="35"
                            HorizontalTextAlignment="Center"
@@ -50,6 +51,7 @@
 
                     <Entry Grid.Row="1" Grid.Column="1"
                            Placeholder="Nom"
+                           Text="{Binding Nom}"
                            BackgroundColor="#DCDCDC"
                            HeightRequest="35"
                            TextColor="Black"
@@ -57,22 +59,26 @@
 
                     <Entry Grid.Row="1" Grid.Column="2"
                            Placeholder="Prénom"
+                           Text="{Binding Prenom}"
                            BackgroundColor="#DCDCDC"
                            HeightRequest="35"
                            TextColor="Black"
                            FontSize="12"/>
 
                     <Entry Grid.Row="1" Grid.Column="3"
-                           Placeholder="Score"
+                           Placeholder="Auto"
+                           Text="{Binding ScoreCalcule}"
+                           IsEnabled="False"
                            BackgroundColor="#DCDCDC"
                            HeightRequest="35"
-                           Keyboard="Numeric"
                            HorizontalTextAlignment="Center"
                            TextColor="Black"
                            FontSize="12"/>
 
                     <Entry Grid.Row="1" Grid.Column="4"
                            Placeholder="Vit"
+                           Text="{Binding Vitesse}"
+                           MaxLength="3"
                            BackgroundColor="#DCDCDC"
                            HeightRequest="35"
                            Keyboard="Numeric"
@@ -82,6 +88,8 @@
 
                     <Entry Grid.Row="1" Grid.Column="5"
                            Placeholder="Endu"
+                           Text="{Binding Endurence}"
+                           MaxLength="3"
                            BackgroundColor="#DCDCDC"
                            HeightRequest="35"
                            Keyboard="Numeric"
@@ -91,6 +99,8 @@
 
                     <Entry Grid.Row="1" Grid.Column="6"
                            Placeholder="Tech"
+                           Text="{Binding Technique}"
+                           MaxLength="3"
                            BackgroundColor="#DCDCDC"
                            HeightRequest="35"
                            Keyboard="Numeric"
@@ -100,6 +110,8 @@
 
                     <Entry Grid.Row="1" Grid.Column="7"
                            Placeholder="Force"
+                           Text="{Binding Force}"
+                           MaxLength="3"
                            BackgroundColor="#DCDCDC"
                            HeightRequest="35"
                            Keyboard="Numeric"
@@ -108,7 +120,8 @@
                            FontSize="12"/>
 
                     <Entry Grid.Row="1" Grid.Column="8"
-                           Placeholder="Poste"
+                           Text="Remplacant"
+                           IsEnabled="False"
                            BackgroundColor="#DCDCDC"
                            HeightRequest="35"
                            HorizontalTextAlignment="Center"

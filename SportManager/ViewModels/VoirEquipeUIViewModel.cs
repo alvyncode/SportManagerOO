@@ -1,4 +1,5 @@
 using System;
+using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SportManager.Data.Repositories;
@@ -12,11 +13,12 @@ public partial class VoirEquipeUIViewModel : ObservableObject
     public string NomEquipe
     {
         get { return nomEquipe; }
-        set { nomEquipe = value; ChargerEquipe(value); }
+        set { nomEquipe = value; _ = ChargerEquipe(value); }
     }
     public EquipeRepository EquipeAccess { get; set; }
     public AsyncRelayCommand ButtonRecruter{ get; set; }
-    public AsyncRelayCommand ButtonModifier { get; set; }
+    public AsyncRelayCommand<int> ButtonModifier { get; set; }
+    public AsyncRelayCommand<int> ButtonSupprimerJoueur { get; set; }
 
     [ObservableProperty]
     private Equipe _newEquipe;
@@ -24,15 +26,50 @@ public partial class VoirEquipeUIViewModel : ObservableObject
     {
         EquipeAccess = equipeAccess;
         ButtonRecruter = new AsyncRelayCommand(NaviguerVersRecrutementPage);
-        ButtonModifier = new AsyncRelayCommand(NaviguerVersModificationDetailJoueur);
+        ButtonModifier = new AsyncRelayCommand<int>(NaviguerVersModificationDetailJoueur);
+        ButtonSupprimerJoueur = new AsyncRelayCommand<int>(SupprimerJoueur);
     }
     public async Task NaviguerVersRecrutementPage()
     {
-        await Shell.Current.GoToAsync("RecrutementPage");
+        if (string.IsNullOrWhiteSpace(NomEquipe))
+        {
+            await Shell.Current.GoToAsync("RecrutementPage");
+            return;
+        }
+
+        var nomEquipeEncode = Uri.EscapeDataString(NomEquipe);
+        await Shell.Current.GoToAsync($"RecrutementPage?Nom={nomEquipeEncode}");
     }
-    public async Task NaviguerVersModificationDetailJoueur()
+    public async Task NaviguerVersModificationDetailJoueur(int joueurId)
     {
-        await Shell.Current.GoToAsync("ModificationDetailJoueur");
+        if (joueurId <= 0)
+        {
+            return;
+        }
+
+        var nomEquipeEncode = Uri.EscapeDataString(NomEquipe ?? string.Empty);
+        await Shell.Current.GoToAsync($"ModificationDetailJoueurView?JoueurId={joueurId}&Nom={nomEquipeEncode}");
+    }
+    public async Task SupprimerJoueur(int joueurId)
+    {
+        if (joueurId <= 0)
+        {
+            return;
+        }
+
+        var confirmation = await Shell.Current.DisplayAlert(
+            "Suppression",
+            "Voulez-vous supprimer ce joueur ?",
+            "Oui",
+            "Non");
+
+        if (!confirmation)
+        {
+            return;
+        }
+
+        await EquipeAccess.SupprimerJoueur(joueurId);
+        await ChargerEquipe(NomEquipe);
     }
     private async Task ChargerEquipe(string nomEquipe)
     {
@@ -40,12 +77,18 @@ public partial class VoirEquipeUIViewModel : ObservableObject
 
         if (equipeTrouvee != null)
         {
+            equipeTrouvee.Joueurs = new ObservableCollection<Joueur>(
+                equipeTrouvee.Joueurs
+                    .OrderBy(j => j.Poste == Poste.Remplacant)
+                    .ThenBy(j => j.Poste)
+                    .ThenBy(j => j.Nom)
+                    .ThenBy(j => j.Prenom));
+
             NewEquipe = equipeTrouvee;
         }
         else
         {
             System.Diagnostics.Debug.WriteLine($"Aucune équipe trouvée avec le nom {nomEquipe}");
-            ChargerEquipe(nomEquipe);
         }
     }
 }

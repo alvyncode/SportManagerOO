@@ -5,22 +5,62 @@ namespace SportManager.Views;
 
 public partial class ModificationDetailJoueurView : ContentPage
 {
+    private ModificationDetailJoueurViewModel? _viewModel;
+
 	public ModificationDetailJoueurView()
 	{
 		InitializeComponent();
-        BindingContext = new ModificationDetailJoueurViewModel();
+        _viewModel = new ModificationDetailJoueurViewModel();
+        BindingContext = _viewModel;
 	}
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
 
+        if (_viewModel != null)
+        {
+            _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
+            _viewModel.PropertyChanged += OnViewModelPropertyChanged;
+        }
+
+        MettreAJourRadarChart();
+    }
+
+    protected override void OnDisappearing()
+    {
+        if (_viewModel != null)
+        {
+            _viewModel.PropertyChanged -= OnViewModelPropertyChanged;
+        }
+
+        base.OnDisappearing();
+    }
+
+    private void OnViewModelPropertyChanged(object? sender, System.ComponentModel.PropertyChangedEventArgs e)
+    {
+        if (e.PropertyName == nameof(ModificationDetailJoueurViewModel.Vitesse)
+            || e.PropertyName == nameof(ModificationDetailJoueurViewModel.Endurence)
+            || e.PropertyName == nameof(ModificationDetailJoueurViewModel.Technique)
+            || e.PropertyName == nameof(ModificationDetailJoueurViewModel.Force))
+        {
+            MettreAJourRadarChart();
+        }
+    }
+
+    private void MettreAJourRadarChart()
+    {
+        if (_viewModel == null)
+        {
+            return;
+        }
+
         var entries = new[]
         {
-            new ChartEntry(80) { Label = "Vitesse",   Color = SKColor.Parse("#f28c57") },
-            new ChartEntry(60) { Label = "Endurance", Color = SKColor.Parse("#f28c57") },
-            new ChartEntry(90) { Label = "Technique", Color = SKColor.Parse("#f28c57") },
-            new ChartEntry(25) { Label = "Force",     Color = SKColor.Parse("#f28c57") },
+            new ChartEntry(_viewModel.Vitesse) { Label = "Vitesse",   Color = SKColor.Parse("#f28c57") },
+            new ChartEntry(_viewModel.Endurence) { Label = "Endurance", Color = SKColor.Parse("#f28c57") },
+            new ChartEntry(_viewModel.Technique) { Label = "Technique", Color = SKColor.Parse("#f28c57") },
+            new ChartEntry(_viewModel.Force) { Label = "Force",     Color = SKColor.Parse("#f28c57") },
         };
 
         radarChart.Chart = new RadarChart
