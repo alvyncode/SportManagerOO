@@ -8,7 +8,7 @@ public partial class App : Application
 { 
 	public App(SportManagerDBContext context)
 	{
-		context.Database.Migrate();
+		context.Database.EnsureCreated();
 		InitializeComponent();
 	}
 	

@@ -4,7 +4,7 @@ using SportManager.Data.Repositories;
 using SportManager.Models;
 using System;
 using System.Collections.ObjectModel;
-using Windows.UI.WebUI;
+
 
 namespace SportManager.ViewModels;
 
