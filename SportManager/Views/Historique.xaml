@@ -8,14 +8,12 @@
     <ScrollView>
         <VerticalStackLayout Padding="30,40,30,20" Spacing="20">
 
-            <!-- Titre -->
             <Label Text="HISTORIQUE"
                    FontSize="40"
                    FontAttributes="Bold"
                    TextColor="White"
                    HorizontalOptions="Start" />
 
-            <!-- En-têtes -->
             <Grid ColumnDefinitions="0.7*,1.2*,1.2*,1*"
                   Padding="0,0,0,5">
                 <Label Text="Id" TextColor="White" FontSize="18" />
@@ -24,8 +22,7 @@
                 <Label Grid.Column="3" Text="Score" TextColor="White" FontSize="18" />
             </Grid>
 
-            <!-- Liste des matchs -->
-            <CollectionView x:Name="HistoriqueCollection"
+            <CollectionView ItemsSource="{Binding Matchs}"
                             SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>

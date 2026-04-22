@@ -4,26 +4,23 @@
              x:Class="SportManager.Views.GestionMatch"
              BackgroundColor="#2F2F2F"
              Title="GestionMatch">
-    
+
     <Grid Padding="25">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Titre -->
         <Label Text="MATCH"
                FontSize="42"
                FontAttributes="Bold"
                TextColor="White"
                HorizontalOptions="Start" />
 
-        <!-- Zone principale -->
         <VerticalStackLayout Grid.Row="1"
                              VerticalOptions="Center"
                              Spacing="40">
 
-            <!-- Ligne : équipe 1 / score / équipe 2 -->
             <Grid ColumnSpacing="25">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -31,44 +28,43 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!-- Equipe 1 -->
                 <Border Grid.Column="0"
                         BackgroundColor="#F59A63"
                         StrokeThickness="0"
                         Padding="12,4">
-                    <Picker x:Name="Equipe1Picker"
-                            Title="ÉQUIPE 1"
+                    <Picker Title="ÉQUIPE 1"
                             TitleColor="Black"
                             TextColor="Black"
                             FontAttributes="Bold"
-                            BackgroundColor="Transparent" />
+                            BackgroundColor="Transparent"
+                            ItemsSource="{Binding Equipes}"
+                            ItemDisplayBinding="{Binding Nom}"
+                            SelectedItem="{Binding Equipe1Selectionnee}" />
                 </Border>
 
-                <!-- Score -->
-                <Label x:Name="ScoreLabel"
-                       Grid.Column="1"
-                       Text="-"
+                <Label Grid.Column="1"
+                       Text="{Binding ScoreAffiche}"
                        FontSize="28"
                        FontAttributes="Bold"
                        TextColor="White"
                        VerticalOptions="Center"
                        HorizontalOptions="Center" />
 
-                <!-- Equipe 2 -->
                 <Border Grid.Column="2"
                         BackgroundColor="#F59A63"
                         StrokeThickness="0"
                         Padding="12,4">
-                    <Picker x:Name="Equipe2Picker"
-                            Title="ÉQUIPE 2"
+                    <Picker Title="ÉQUIPE 2"
                             TitleColor="Black"
                             TextColor="Black"
                             FontAttributes="Bold"
-                            BackgroundColor="Transparent" />
+                            BackgroundColor="Transparent"
+                            ItemsSource="{Binding Equipes}"
+                            ItemDisplayBinding="{Binding Nom}"
+                            SelectedItem="{Binding Equipe2Selectionnee}" />
                 </Border>
             </Grid>
 
-            <!-- Bouton -->
             <Button Text="JOUER"
                     WidthRequest="110"
                     HeightRequest="55"
@@ -77,7 +73,7 @@
                     TextColor="Black"
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
-                    Clicked="OnJouerClicked"/>
+                    Command="{Binding JouerMatchCommand}" />
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
