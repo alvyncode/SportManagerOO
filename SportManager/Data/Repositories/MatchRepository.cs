@@ -55,20 +55,13 @@ public class MatchRepository
     return match;
 }
 
-    public List<MatchHistorique> GetHistorique()
+    public List<Match> GetHistorique()
     {
         return _context.Matches
             .AsNoTracking()
             .Include(m => m.PremiereEquipe)
             .Include(m => m.DeuxiemeEquipe)
             .OrderByDescending(m => m.Id)
-            .Select(m => new MatchHistorique
-            {
-                Id = m.Id,
-                Equipe1 = m.PremiereEquipe.Nom,
-                Equipe2 = m.DeuxiemeEquipe.Nom,
-                Score = $"{m.ScorePremiereEquipe} - {m.ScoreDeuxiemeEquipe}"
-            })
             .ToList();
     }
 

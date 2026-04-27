@@ -34,9 +34,13 @@
 
                             <Grid ColumnDefinitions="0.7*,1.2*,1.2*,1*">
                                 <Label Text="{Binding Id}" TextColor="White" FontSize="18" />
-                                <Label Grid.Column="1" Text="{Binding Equipe1}" TextColor="White" FontSize="18" />
-                                <Label Grid.Column="2" Text="{Binding Equipe2}" TextColor="White" FontSize="18" />
-                                <Label Grid.Column="3" Text="{Binding Score}" TextColor="White" FontSize="18" />
+                                <Label Grid.Column="1" Text="{Binding PremiereEquipe.Nom}" TextColor="White" FontSize="18" />
+                                <Label Grid.Column="2" Text="{Binding DeuxiemeEquipe.Nom}" TextColor="White" FontSize="18" />
+                                <HorizontalStackLayout Grid.Column="3" Spacing="4">
+                                    <Label Text="{Binding ScorePremiereEquipe}" TextColor="White" FontSize="18" />
+                                    <Label Text="-" TextColor="White" FontSize="18" />
+                                    <Label Text="{Binding ScoreDeuxiemeEquipe}" TextColor="White" FontSize="18" />
+                                </HorizontalStackLayout>
                             </Grid>
 
                         </Frame>

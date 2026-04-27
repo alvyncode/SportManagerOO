@@ -9,7 +9,7 @@ public partial class HistoriqueViewModel : ObservableObject
 {
     private readonly MatchRepository _repository;
 
-    public ObservableCollection<MatchHistorique> Matchs { get; } = new();
+    public ObservableCollection<Match> Matchs { get; } = new();
 
     public HistoriqueViewModel()
     {
