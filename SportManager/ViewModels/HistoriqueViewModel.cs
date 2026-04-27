@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
-using SportManager.Data;
+using SportManager.Data.Repositories;
 using SportManager.Models;
 
 namespace SportManager.ViewModels;

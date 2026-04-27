@@ -1,7 +1,7 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using SportManager.Data;
+using SportManager.Data.Repositories;
 using SportManager.Models;
 
 namespace SportManager.ViewModels;
@@ -42,22 +42,22 @@ public partial class GestionMatchViewModel : ObservableObject
     {
         if (Equipe1Selectionnee is null || Equipe2Selectionnee is null)
         {
-            await Shell.Current.DisplayAlert("Erreur", "Veuillez choisir deux équipes.", "OK");
+            await Shell.Current.DisplayAlert("Erreur", "Veuillez choisir deux equipes.", "OK");
             return;
         }
 
         if (Equipe1Selectionnee.Id == Equipe2Selectionnee.Id)
         {
-            await Shell.Current.DisplayAlert("Erreur", "Tu ne peux pas faire jouer la même équipe contre elle-même.", "OK");
+            await Shell.Current.DisplayAlert("Erreur", "Tu ne peux pas faire jouer la meme equipe contre elle-meme.", "OK");
             return;
         }
 
         var match = _repository.JouerMatch(Equipe1Selectionnee, Equipe2Selectionnee);
-        ScoreAffiche = match.Score;
+        ScoreAffiche = $"{match.ScorePremiereEquipe} - {match.ScoreDeuxiemeEquipe}";
 
         await Shell.Current.DisplayAlert(
-            "Résultat",
-            $"{match.Equipe1} {match.Score} {match.Equipe2}",
+            "Resultat",
+            $"{match.PremiereEquipe.Nom} {match.ScorePremiereEquipe} - {match.ScoreDeuxiemeEquipe} {match.DeuxiemeEquipe.Nom}",
             "OK");
     }
 }
