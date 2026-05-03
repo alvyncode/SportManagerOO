@@ -73,21 +73,21 @@ public class MatchRepository
         int difference = scoreEquipe - scoreAdverse;
     
         // Base aléatoire
-        int score = random.Next(0, 3); // 0, 1 ou 2
+        int score = random.Next(100, 300); // 0, 1 ou 2. J'ai modifier pour que ça correspondent plus à un match de basket
     
         // Bonus si l'équipe est plus forte
         if (difference > 0)
-            score += 1;
+            score += 67;
     
         // Bonus supplémentaire si elle est beaucoup plus forte
         if (difference >= 20)
-            score += 1;
+            score += 67;
     
         // Malus si elle est plus faible
         if (difference <= -20)
-            score -= 1;
+            score -= 95;
     
         // Empêcher les scores négatifs et limiter le max
-        return Math.Clamp(score, 0, 5);
+        return Math.Clamp(score, 0, 400);
     }
 }
