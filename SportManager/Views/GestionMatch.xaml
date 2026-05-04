@@ -96,6 +96,32 @@
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     Command="{Binding JouerMatchCommand}" />
+
+            <Border BackgroundColor="#3B3B3B"
+                    Padding="16"
+                    StrokeThickness="0"
+                    IsVisible="{Binding HasJoueursBlesses}">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Joueurs blesses (score divise par 2)"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="16"/>
+
+                    <CollectionView ItemsSource="{Binding JoueursBlessesAffiches}"
+                                    SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding .}"
+                                       TextColor="#FFB3B3"
+                                       FontSize="14"/>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SportManager.Data;
 
@@ -10,9 +11,11 @@ using SportManager.Data;
 namespace SportManager.Data.Migrations
 {
     [DbContext(typeof(SportManagerDBContext))]
-    partial class SportManagerDBContextModelSnapshot : ModelSnapshot
+    [Migration("20260504082709_BlessureColumnUpdate")]
+    partial class BlessureColumnUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

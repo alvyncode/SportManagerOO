@@ -20,24 +20,37 @@ public class MatchRepository
 
     public List<Equipe> GetEquipes()
     {
-        return _context.Equipes
+        var equipes = _context.Equipes
             .AsNoTracking()
+            .Include(e => e.Joueurs)
             .OrderBy(e => e.Nom)
             .ToList();
+
+        foreach (var equipe in equipes)
+        {
+            equipe.Score = CalculerScoreEquipeAvecBlessures(equipe);
+        }
+
+        return equipes;
     }
 
     public MatchSimulationResult JouerMatch(Equipe equipe1, Equipe equipe2)
     {
         var premiereEquipe = _context.Equipes
+            .Include(e => e.Joueurs)
             .FirstOrDefault(e => e.Id == equipe1.Id);
 
         var deuxiemeEquipe = _context.Equipes
+            .Include(e => e.Joueurs)
             .FirstOrDefault(e => e.Id == equipe2.Id);
 
         if (premiereEquipe == null || deuxiemeEquipe == null)
         {
             throw new Exception("Une ou les deux equipes sont introuvables en base.");
         }
+
+        MettreAJourScoreEquipeAvecBlessures(premiereEquipe);
+        MettreAJourScoreEquipeAvecBlessures(deuxiemeEquipe);
 
         var match = new Match
         {
@@ -50,8 +63,14 @@ public class MatchRepository
         var random = new Random();
         var joueursBlesses = new List<Joueur>();
 
+        AjouterJoueursActuellementBlesses(premiereEquipe, joueursBlesses);
+        AjouterJoueursActuellementBlesses(deuxiemeEquipe, joueursBlesses);
+
         GererBlessuresEquipe(premiereEquipe.Id, random, joueursBlesses);
         GererBlessuresEquipe(deuxiemeEquipe.Id, random, joueursBlesses);
+
+        MettreAJourScoreEquipeAvecBlessures(premiereEquipe);
+        MettreAJourScoreEquipeAvecBlessures(deuxiemeEquipe);
 
         _context.Matches.Add(match);
         _context.SaveChanges();
@@ -84,7 +103,7 @@ public class MatchRepository
         }
 
         var joueursDisponibles = _context.Joueurs
-            .Where(j => j.EquipeId == equipeId)
+            .Where(j => j.EquipeId == equipeId && !j.Blessure)
             .ToList();
 
         if (joueursDisponibles.Count == 0)
@@ -93,11 +112,45 @@ public class MatchRepository
         }
 
         var joueurBlesse = joueursDisponibles[random.Next(joueursDisponibles.Count)];
-        if (!joueurBlesse.Blessure)
+        joueurBlesse.Blessure = true;
+
+        if (joueursBlesses.All(j => j.Id != joueurBlesse.Id))
         {
-            joueurBlesse.Blessure = true;
+            joueursBlesses.Add(joueurBlesse);
         }
-        joueursBlesses.Add(joueurBlesse);
+    }
+
+    private static void AjouterJoueursActuellementBlesses(Equipe equipe, List<Joueur> joueursBlesses)
+    {
+        if (equipe.Joueurs == null)
+        {
+            return;
+        }
+
+        foreach (var joueur in equipe.Joueurs.Where(j => j.Blessure))
+        {
+            if (joueursBlesses.All(j => j.Id != joueur.Id))
+            {
+                joueursBlesses.Add(joueur);
+            }
+        }
+    }
+
+    private static void MettreAJourScoreEquipeAvecBlessures(Equipe equipe)
+    {
+        equipe.Score = CalculerScoreEquipeAvecBlessures(equipe);
+    }
+
+    private static int CalculerScoreEquipeAvecBlessures(Equipe equipe)
+    {
+        if (equipe.Joueurs == null || equipe.Joueurs.Count == 0)
+        {
+            return 0;
+        }
+
+        return equipe.Joueurs
+            .Where(j => j.Poste != Poste.Remplacant)
+            .Sum(j => j.Blessure ? j.Score / 2 : j.Score);
     }
 
     private static int CalculerScoreMatch(int scoreEquipe, int scoreAdverse)

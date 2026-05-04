@@ -26,4 +26,14 @@ public class SportManagerDBContext : DbContext
     public DbSet<Joueur> Joueurs { get; set; }
     public DbSet<Equipe> Equipes { get; set; }
     public DbSet<Match> Matches { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Joueur>()
+            .Property(j => j.Blessure)
+            .HasColumnType("tinyint(1)")
+            .HasDefaultValue(false);
+    }
 }

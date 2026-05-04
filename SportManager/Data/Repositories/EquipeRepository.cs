@@ -208,6 +208,11 @@ public class EquipeRepository
 
         equipe.Score = equipe.Joueurs
             .Where(j => j.Poste != Poste.Remplacant)
-            .Sum(CalculerScoreJoueurSelonPoste);
+            .Sum(j => AppliquerPenaliteBlessure(CalculerScoreJoueurSelonPoste(j), j.Blessure));
+    }
+
+    private static int AppliquerPenaliteBlessure(int scoreJoueur, bool estBlesse)
+    {
+        return estBlesse ? scoreJoueur / 2 : scoreJoueur;
     }
 }

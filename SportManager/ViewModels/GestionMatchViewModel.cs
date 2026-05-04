@@ -68,7 +68,7 @@ public partial class GestionMatchViewModel : ObservableObject
         JoueursBlessesAffiches.Clear();
         foreach (var joueur in simulationResult.JoueursBlesses)
         {
-            var libelle = $"{joueur.Prenom} {joueur.Nom}";
+            var libelle = $"{joueur.Prenom} {joueur.Nom} - score reduit de 50%";
             JoueursBlessesAffiches.Add(libelle);
         }
 
