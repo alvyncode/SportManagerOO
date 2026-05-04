@@ -2,17 +2,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SportManager.Views.Historique"
-             BackgroundColor="#2F2F2F"
-             Title="Historique">
+             BackgroundColor="#2F2F2F">
 
     <ScrollView>
         <VerticalStackLayout Padding="30,40,30,20" Spacing="20">
 
-            <Label Text="HISTORIQUE"
-                   FontSize="40"
-                   FontAttributes="Bold"
-                   TextColor="White"
-                   HorizontalOptions="Start" />
+        <Label Text="HISTORIQUE"
+                       Style="{StaticResource Headline}"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       Grid.Column="0"
+                       Margin="14,14,0,0"/>
 
             <Grid ColumnDefinitions="0.7*,1.2*,1.2*,1*"
                   Padding="0,0,0,5">

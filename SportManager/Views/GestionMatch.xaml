@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SportManager.Views.GestionMatch"
-             BackgroundColor="#2F2F2F"
-             Title="GestionMatch">
+             BackgroundColor="#2F2F2F">
 
     <Grid Padding="25">
         <Grid.RowDefinitions>
@@ -11,11 +10,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Text="MATCH"
-               FontSize="42"
-               FontAttributes="Bold"
-               TextColor="White"
-               HorizontalOptions="Start" />
+        <Label Text="JOUER UN MATCH"
+                       Style="{StaticResource Headline}"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       Grid.Column="0"
+                       Margin="14,14,0,0"/>
 
         <VerticalStackLayout Grid.Row="1"
                              VerticalOptions="Center"
@@ -28,19 +28,31 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="0"
-                        BackgroundColor="#F59A63"
-                        StrokeThickness="0"
-                        Padding="12,4">
-                    <Picker Title="EQUIPE 1"
-                            TitleColor="Black"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            BackgroundColor="Transparent"
-                            ItemsSource="{Binding Equipes}"
-                            ItemDisplayBinding="{Binding Nom}"
-                            SelectedItem="{Binding Equipe1Selectionnee}" />
-                </Border>
+                <HorizontalStackLayout  Grid.Column="0">
+                    <VerticalStackLayout VerticalOptions ="Center">
+                        <Label Text ="Score"/>
+                        <Label Text ="{Binding Equipe1Selectionnee.Score}"/>
+                    </VerticalStackLayout>
+                    
+                    <Border WidthRequest="500" 
+                            HorizontalOptions="Center"
+                            Margin="10"
+                            BackgroundColor="#F59A63"
+                            StrokeThickness="0"
+                            Padding="12,4">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                        <Picker Title="ÉQUIPE 1"
+                                TitleColor="Black"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                BackgroundColor="Transparent"
+                                ItemsSource="{Binding Equipes}"
+                                ItemDisplayBinding="{Binding Nom}"
+                                SelectedItem="{Binding Equipe1Selectionnee}" />
+                    </Border>
+                </HorizontalStackLayout>
 
                 <Label Grid.Column="1"
                        Text="{Binding ScoreAffiche}"
@@ -54,7 +66,7 @@
                         BackgroundColor="#F59A63"
                         StrokeThickness="0"
                         Padding="12,4">
-                    <Picker Title="EQUIPE 2"
+                    <Picker Title="ÉQUIPE 2"
                             TitleColor="Black"
                             TextColor="Black"
                             FontAttributes="Bold"
@@ -66,8 +78,8 @@
             </Grid>
 
             <Button Text="JOUER"
-                    WidthRequest="110"
-                    HeightRequest="55"
+                    Width ="50"
+                    Padding="15"
                     CornerRadius="15"
                     BackgroundColor="#F59A63"
                     TextColor="Black"
