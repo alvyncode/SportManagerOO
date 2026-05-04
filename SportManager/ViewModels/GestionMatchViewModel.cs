@@ -9,8 +9,10 @@ namespace SportManager.ViewModels;
 public partial class GestionMatchViewModel : ObservableObject
 {
     private readonly MatchRepository _repository;
+    private bool _hasJoueursBlesses;
 
     public ObservableCollection<Equipe> Equipes { get; } = new();
+    public ObservableCollection<string> JoueursBlessesAffiches { get; } = new();
 
     [ObservableProperty]
     private Equipe? equipe1Selectionnee;
@@ -20,6 +22,12 @@ public partial class GestionMatchViewModel : ObservableObject
 
     [ObservableProperty]
     private string scoreAffiche = "-";
+
+    public bool HasJoueursBlesses
+    {
+        get => _hasJoueursBlesses;
+        set => SetProperty(ref _hasJoueursBlesses, value);
+    }
 
     public GestionMatchViewModel()
     {
@@ -52,8 +60,19 @@ public partial class GestionMatchViewModel : ObservableObject
             return;
         }
 
-        var match = _repository.JouerMatch(Equipe1Selectionnee, Equipe2Selectionnee);
+        var simulationResult = _repository.JouerMatch(Equipe1Selectionnee, Equipe2Selectionnee);
+        var match = simulationResult.Match;
+
         ScoreAffiche = $"{match.ScorePremiereEquipe} - {match.ScoreDeuxiemeEquipe}";
+
+        JoueursBlessesAffiches.Clear();
+        foreach (var joueur in simulationResult.JoueursBlesses)
+        {
+            var libelle = $"{joueur.Prenom} {joueur.Nom}";
+            JoueursBlessesAffiches.Add(libelle);
+        }
+
+        HasJoueursBlesses = JoueursBlessesAffiches.Count > 0;
 
         await Shell.Current.DisplayAlert(
             "Resultat",

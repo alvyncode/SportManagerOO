@@ -19,7 +19,7 @@
 
         <VerticalStackLayout Grid.Row="1"
                              VerticalOptions="Center"
-                             Spacing="40">
+                             Spacing="26">
 
             <Grid ColumnSpacing="25">
                 <Grid.ColumnDefinitions>
@@ -32,7 +32,7 @@
                         BackgroundColor="#F59A63"
                         StrokeThickness="0"
                         Padding="12,4">
-                    <Picker Title="ÉQUIPE 1"
+                    <Picker Title="EQUIPE 1"
                             TitleColor="Black"
                             TextColor="Black"
                             FontAttributes="Bold"
@@ -54,7 +54,7 @@
                         BackgroundColor="#F59A63"
                         StrokeThickness="0"
                         Padding="12,4">
-                    <Picker Title="ÉQUIPE 2"
+                    <Picker Title="EQUIPE 2"
                             TitleColor="Black"
                             TextColor="Black"
                             FontAttributes="Bold"
@@ -74,6 +74,27 @@
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
                     Command="{Binding JouerMatchCommand}" />
+
+            <VerticalStackLayout IsVisible="{Binding HasJoueursBlesses}"
+                                 Spacing="8">
+                <Label Text="Joueurs blesses"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center" />
+
+                <CollectionView ItemsSource="{Binding JoueursBlessesAffiches}"
+                                HeightRequest="130">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Label Text="{Binding .}"
+                                   TextColor="#FFD7B8"
+                                   FontSize="16"
+                                   HorizontalOptions="Center" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </VerticalStackLayout>
         </VerticalStackLayout>
     </Grid>
 </ContentPage>
