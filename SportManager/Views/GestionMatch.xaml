@@ -11,10 +11,11 @@
         </Grid.RowDefinitions>
 
         <Label Text="JOUER UN MATCH"
-               Style="{StaticResource Headline}"
-               VerticalOptions="Start"
-               HorizontalOptions="Start"
-               Margin="14,14,0,0"/>
+                       Style="{StaticResource Headline}"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start"
+                       Grid.Column="0"
+                       Margin="14,14,0,0"/>
 
         <VerticalStackLayout Grid.Row="1"
                              VerticalOptions="Center"
@@ -27,22 +28,22 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <HorizontalStackLayout Grid.Column="0">
-                    <VerticalStackLayout VerticalOptions="Center">
-                        <Label Text="Score" TextColor="White"/>
-                        <Label Text="{Binding ScoreEquipeGaucheAffiche}" TextColor="White"/>
+                <HorizontalStackLayout  Grid.Column="0">
+                    <VerticalStackLayout VerticalOptions ="Center">
+                        <Label Text ="Score"/>
+                        <Label Text ="{Binding Equipe1Selectionnee.Score}"/>
                     </VerticalStackLayout>
-
-                    <Border WidthRequest="500"
+                    
+                    <Border WidthRequest="500" 
                             HorizontalOptions="Center"
                             Margin="10"
                             BackgroundColor="#F59A63"
                             StrokeThickness="0"
                             Padding="12,4">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="8" />
-                        </Border.StrokeShape>
-                        <Picker Title="EQUIPE 1"
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="8" />
+                            </Border.StrokeShape>
+                        <Picker Title="ÉQUIPE 1"
                                 TitleColor="Black"
                                 TextColor="Black"
                                 FontAttributes="Bold"
@@ -54,38 +55,12 @@
                 </HorizontalStackLayout>
 
                 <Label Grid.Column="1"
-                       Text="-"
+                       Text="{Binding ScoreAffiche}"
                        FontSize="28"
                        FontAttributes="Bold"
                        TextColor="White"
                        VerticalOptions="Center"
                        HorizontalOptions="Center" />
-
-                <HorizontalStackLayout Grid.Column="2">
-                    <Border WidthRequest="500"
-                            HorizontalOptions="Center"
-                            Margin="10"
-                            BackgroundColor="#F59A63"
-                            StrokeThickness="0"
-                            Padding="12,4">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="8" />
-                        </Border.StrokeShape>
-                        <Picker Title="EQUIPE 2"
-                                TitleColor="Black"
-                                TextColor="Black"
-                                FontAttributes="Bold"
-                                BackgroundColor="Transparent"
-                                ItemsSource="{Binding Equipes}"
-                                ItemDisplayBinding="{Binding Nom}"
-                                SelectedItem="{Binding Equipe2Selectionnee}" />
-                    </Border>
-
-                    <VerticalStackLayout VerticalOptions="Center">
-                        <Label Text="Score" TextColor="White"/>
-                        <Label Text="{Binding ScoreEquipeDroiteAffiche}" TextColor="White"/>
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
                 <HorizontalStackLayout Grid.Column="2" HorizontalOptions ="End" >
                     <Border WidthRequest="500" 
                             HorizontalOptions="Center"
@@ -113,7 +88,7 @@
             </Grid>
 
             <Button Text="JOUER"
-                    Width="50"
+                    Width ="50"
                     Padding="15"
                     CornerRadius="15"
                     BackgroundColor="#F59A63"
