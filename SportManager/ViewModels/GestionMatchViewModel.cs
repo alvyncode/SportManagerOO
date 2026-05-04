@@ -1,4 +1,5 @@
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SportManager.Data.Repositories;
@@ -6,22 +7,42 @@ using SportManager.Models;
 
 namespace SportManager.ViewModels;
 
-public partial class GestionMatchViewModel : ObservableObject
+public class GestionMatchViewModel : ObservableObject
 {
     private readonly MatchRepository _repository;
+
+    private Equipe? _equipe1Selectionnee;
+    private Equipe? _equipe2Selectionnee;
+    private string _scoreEquipeGaucheAffiche = "-";
+    private string _scoreEquipeDroiteAffiche = "-";
     private bool _hasJoueursBlesses;
 
     public ObservableCollection<Equipe> Equipes { get; } = new();
     public ObservableCollection<string> JoueursBlessesAffiches { get; } = new();
 
-    [ObservableProperty]
-    private Equipe? equipe1Selectionnee;
+    public Equipe? Equipe1Selectionnee
+    {
+        get => _equipe1Selectionnee;
+        set => SetProperty(ref _equipe1Selectionnee, value);
+    }
 
-    [ObservableProperty]
-    private Equipe? equipe2Selectionnee;
+    public Equipe? Equipe2Selectionnee
+    {
+        get => _equipe2Selectionnee;
+        set => SetProperty(ref _equipe2Selectionnee, value);
+    }
 
-    [ObservableProperty]
-    private string scoreAffiche = "-";
+    public string ScoreEquipeGaucheAffiche
+    {
+        get => _scoreEquipeGaucheAffiche;
+        set => SetProperty(ref _scoreEquipeGaucheAffiche, value);
+    }
+
+    public string ScoreEquipeDroiteAffiche
+    {
+        get => _scoreEquipeDroiteAffiche;
+        set => SetProperty(ref _scoreEquipeDroiteAffiche, value);
+    }
 
     public bool HasJoueursBlesses
     {
@@ -29,9 +50,12 @@ public partial class GestionMatchViewModel : ObservableObject
         set => SetProperty(ref _hasJoueursBlesses, value);
     }
 
+    public ICommand JouerMatchCommand { get; }
+
     public GestionMatchViewModel()
     {
         _repository = new MatchRepository();
+        JouerMatchCommand = new AsyncRelayCommand(JouerMatch);
         ChargerEquipes();
     }
 
@@ -45,7 +69,6 @@ public partial class GestionMatchViewModel : ObservableObject
         }
     }
 
-    [RelayCommand]
     private async Task JouerMatch()
     {
         if (Equipe1Selectionnee is null || Equipe2Selectionnee is null)
@@ -63,13 +86,13 @@ public partial class GestionMatchViewModel : ObservableObject
         var simulationResult = _repository.JouerMatch(Equipe1Selectionnee, Equipe2Selectionnee);
         var match = simulationResult.Match;
 
-        ScoreAffiche = $"{match.ScorePremiereEquipe} - {match.ScoreDeuxiemeEquipe}";
+        ScoreEquipeGaucheAffiche = match.ScorePremiereEquipe.ToString();
+        ScoreEquipeDroiteAffiche = match.ScoreDeuxiemeEquipe.ToString();
 
         JoueursBlessesAffiches.Clear();
         foreach (var joueur in simulationResult.JoueursBlesses)
         {
-            var libelle = $"{joueur.Prenom} {joueur.Nom}";
-            JoueursBlessesAffiches.Add(libelle);
+            JoueursBlessesAffiches.Add($"{joueur.Prenom} {joueur.Nom}");
         }
 
         HasJoueursBlesses = JoueursBlessesAffiches.Count > 0;

@@ -6,6 +6,7 @@ namespace SportManager.Data.Repositories;
 public class MatchRepository
 {
     private readonly SportManagerDBContext _context;
+    private const double BlessureChanceParEquipe = 1.0; // 1.0 = 100% (mettre 0.25 pour 25%)
 
     public MatchRepository()
     {
@@ -77,13 +78,13 @@ public class MatchRepository
 
     private void GererBlessuresEquipe(int equipeId, Random random, List<Joueur> joueursBlesses)
     {
-        if (random.NextDouble() > 0.25)
+        if (random.NextDouble() > BlessureChanceParEquipe)
         {
             return;
         }
 
         var joueursDisponibles = _context.Joueurs
-            .Where(j => j.EquipeId == equipeId && !j.Blessure)
+            .Where(j => j.EquipeId == equipeId)
             .ToList();
 
         if (joueursDisponibles.Count == 0)
@@ -92,7 +93,10 @@ public class MatchRepository
         }
 
         var joueurBlesse = joueursDisponibles[random.Next(joueursDisponibles.Count)];
-        joueurBlesse.Blessure = true;
+        if (!joueurBlesse.Blessure)
+        {
+            joueurBlesse.Blessure = true;
+        }
         joueursBlesses.Add(joueurBlesse);
     }
 
