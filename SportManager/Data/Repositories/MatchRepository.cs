@@ -6,7 +6,7 @@ namespace SportManager.Data.Repositories;
 public class MatchRepository
 {
     private readonly SportManagerDBContext _context;
-    private const double BlessureChanceParEquipe = 1.0; // 1.0 = 100% (mettre 0.25 pour 25%)
+    private const double BlessureChanceParEquipe = 0.1; // 1.0 = 100% (mettre 0.25 pour 25%)
 
     public MatchRepository()
     {
